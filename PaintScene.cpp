@@ -27,6 +27,8 @@ void PaintScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     if (draw_mode == "BRUSH") {
         addEllipse(event->scenePos().x() - (int)(brush_size/2), event->scenePos().y() - (int)(brush_size/2), brush_size, brush_size, QPen(Qt::NoPen),QBrush(QColor(brush_color[0], brush_color[1], brush_color[2])));
         previous_point = event->scenePos();
+    } else if (draw_mode == "FILL") {
+        addRect(-100, -100, 1000, 1000, QPen(Qt::NoPen), QBrush(QColor(brush_color[0], brush_color[1], brush_color[2])));
     } else {
         previous_point = event->scenePos();
     }

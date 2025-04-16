@@ -38,6 +38,7 @@ class GraphicEditor : public QMainWindow
     void setRectMode();
     void setEllipseMode();
     void setLineMode();
+    void setFillMode();
 
 public:
     GraphicEditor(QWidget *parent = nullptr);

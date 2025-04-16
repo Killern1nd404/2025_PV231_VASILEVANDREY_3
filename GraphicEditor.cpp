@@ -11,9 +11,9 @@ GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     connect(timer, &QTimer::timeout, this, &GraphicEditor::slotTimer);
     timer->start(100);
 
-    QPixmap pixmap("./resources/brush_image.png");
-    QIcon ButtonIcon(pixmap);
-    ui->brushButton->setIcon(ButtonIcon);
+    //QPixmap pixmap("./resources/brush_image.png");
+    //QIcon ButtonIcon(pixmap);
+    //ui->brushButton->setIcon(ButtonIcon);
     //ui->brushButton->setIconSize(QSize(65, 65));
 
     connect(ui->brushSize, &QSpinBox::valueChanged, this, &GraphicEditor::brushSizeCanged);
@@ -30,6 +30,7 @@ GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     connect(ui->rectButton, &QPushButton::clicked, this, &GraphicEditor::setRectMode);
     connect(ui->ellipseButton, &QPushButton::clicked, this, &GraphicEditor::setEllipseMode);
     connect(ui->lineButton, &QPushButton::clicked, this, &GraphicEditor::setLineMode);
+    connect(ui->fillButton, &QPushButton::clicked, this, &GraphicEditor::setFillMode);
 }
 
 GraphicEditor::~GraphicEditor()
@@ -113,4 +114,8 @@ void GraphicEditor::setEllipseMode() {
 
 void GraphicEditor::setLineMode() {
     scene->setDrawMode("LINE");
+}
+
+void GraphicEditor::setFillMode() {
+    scene->setDrawMode("FILL");
 }
