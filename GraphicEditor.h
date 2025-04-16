@@ -20,10 +20,20 @@ class GraphicEditor : public QMainWindow
     Ui::GraphicEditor *ui;
     QTimer *timer;
     PaintScene *scene;
+    //int brush_color[3] = {0, 0, 0};
 
     void resizeEvent(QResizeEvent *event);
     void slotTimer();
     void brushSizeCanged();
+    void setWhiteColor();
+    void setBlackColor();
+    void setRedColor();
+    void setGreenColor();
+    void setBlueColor();
+    void setOrangeColor();
+    void setBrownColor();
+    void setYellowColor();
+    void setPurpleColor();
 
 public:
     GraphicEditor(QWidget *parent = nullptr);

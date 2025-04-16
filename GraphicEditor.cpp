@@ -12,6 +12,15 @@ GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     timer->start(100);
 
     connect(ui->brushSize, &QSpinBox::valueChanged, this, &GraphicEditor::brushSizeCanged);
+    connect(ui->setWhiteButton, &QPushButton::clicked, this, &GraphicEditor::setWhiteColor);
+    connect(ui->setBlackButton, &QPushButton::clicked, this, &GraphicEditor::setBlackColor);
+    connect(ui->setRedButton, &QPushButton::clicked, this, &GraphicEditor::setRedColor);
+    connect(ui->setGreenButton, &QPushButton::clicked, this, &GraphicEditor::setGreenColor);
+    connect(ui->setBlueButton, &QPushButton::clicked, this, &GraphicEditor::setBlueColor);
+    connect(ui->setBrownButton, &QPushButton::clicked, this, &GraphicEditor::setBrownColor);
+    connect(ui->setPurpleButton, &QPushButton::clicked, this, &GraphicEditor::setPurpleColor);
+    connect(ui->setYellowButton, &QPushButton::clicked, this, &GraphicEditor::setYellowColor);
+    connect(ui->setOrangeButton, &QPushButton::clicked, this, &GraphicEditor::setOrangeColor);
 }
 
 GraphicEditor::~GraphicEditor()
@@ -31,4 +40,52 @@ void GraphicEditor::brushSizeCanged() {
 void GraphicEditor::resizeEvent(QResizeEvent *event) {
     timer->start(100);
     QWidget::resizeEvent(event);
+}
+
+void GraphicEditor::setWhiteColor() {
+    scene->setColor(255, 255, 255);
+    ui->frame->setStyleSheet("background-color: rgb(255, 255, 255)");
+    //brush_color[0] = 255;
+    //brush_color[1] = 255;
+    //brush_color[2] = 255;
+}
+
+void GraphicEditor::setBlackColor() {
+    scene->setColor(0, 0, 0);
+    ui->frame->setStyleSheet("background-color: rgb(0, 0, 0)");
+}
+
+void GraphicEditor::setRedColor() {
+    scene->setColor(255, 0, 0);
+    ui->frame->setStyleSheet("background-color: rgb(255, 0, 0)");
+}
+
+void GraphicEditor::setGreenColor() {
+    scene->setColor(0, 128, 0);
+    ui->frame->setStyleSheet("background-color: rgb(0, 128, 0)");
+}
+
+void GraphicEditor::setBlueColor() {
+    scene->setColor(0, 0, 255);
+    ui->frame->setStyleSheet("background-color: rgb(0, 0, 255)");
+}
+
+void GraphicEditor::setBrownColor() {
+    scene->setColor(153, 51, 0);
+    ui->frame->setStyleSheet("background-color: rgb(153, 51, 0)");
+}
+
+void GraphicEditor::setOrangeColor() {
+    scene->setColor(255, 165, 0);
+    ui->frame->setStyleSheet("background-color: rgb(255, 165, 0)");
+}
+
+void GraphicEditor::setPurpleColor() {
+    scene->setColor(128, 0, 128);
+    ui->frame->setStyleSheet("background-color: rgb(128, 0, 128)");
+}
+
+void GraphicEditor::setYellowColor() {
+    scene->setColor(255, 255, 0);
+    ui->frame->setStyleSheet("background-color: rgb(255, 255, 0)");
 }
