@@ -44,6 +44,12 @@
       <height>630</height>
      </rect>
     </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="palette">
      <palette>
       <active>
@@ -518,6 +524,9 @@
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
     </property>
     <property name="verticalScrollBarPolicy">
      <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
@@ -5533,6 +5542,35 @@
      </property>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="groupBox_4">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>450</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Выбранный режим:</string>
+    </property>
+    <widget class="QLabel" name="modeLabel">
+     <property name="geometry">
+      <rect>
+       <x>5</x>
+       <y>25</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Кисть</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -5548,18 +5586,18 @@
      <string>Файл</string>
     </property>
     <addaction name="separator"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
+    <addaction name="saveButton"/>
+    <addaction name="loadButton"/>
    </widget>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action_2">
+  <action name="saveButton">
    <property name="text">
     <string>Сохранить</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="loadButton">
    <property name="text">
     <string>Загрузить</string>
    </property>

@@ -20,7 +20,6 @@ class GraphicEditor : public QMainWindow
     Ui::GraphicEditor *ui;
     QTimer *timer;
     PaintScene *scene;
-    //int brush_color[3] = {0, 0, 0};
 
     void resizeEvent(QResizeEvent *event);
     void slotTimer();
@@ -39,6 +38,8 @@ class GraphicEditor : public QMainWindow
     void setEllipseMode();
     void setLineMode();
     void setFillMode();
+    void saveImage();
+    void loadImage();
 
 public:
     GraphicEditor(QWidget *parent = nullptr);

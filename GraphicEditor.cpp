@@ -1,5 +1,8 @@
 #include "GraphicEditor.h"
 #include "./ui_GraphicEditor.h"
+#include <QFileDialog>
+#include <QGraphicsPixmapItem>
+#include <iostream>
 
 GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::GraphicEditor) {
     ui->setupUi(this);
@@ -10,11 +13,6 @@ GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     timer = new QTimer();
     connect(timer, &QTimer::timeout, this, &GraphicEditor::slotTimer);
     timer->start(100);
-
-    //QPixmap pixmap("./resources/brush_image.png");
-    //QIcon ButtonIcon(pixmap);
-    //ui->brushButton->setIcon(ButtonIcon);
-    //ui->brushButton->setIconSize(QSize(65, 65));
 
     connect(ui->brushSize, &QSpinBox::valueChanged, this, &GraphicEditor::brushSizeCanged);
     connect(ui->setWhiteButton, &QPushButton::clicked, this, &GraphicEditor::setWhiteColor);
@@ -31,6 +29,8 @@ GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     connect(ui->ellipseButton, &QPushButton::clicked, this, &GraphicEditor::setEllipseMode);
     connect(ui->lineButton, &QPushButton::clicked, this, &GraphicEditor::setLineMode);
     connect(ui->fillButton, &QPushButton::clicked, this, &GraphicEditor::setFillMode);
+    connect(ui->saveButton, &QAction::triggered, this, &GraphicEditor::saveImage);
+    connect(ui->loadButton, &QAction::triggered, this, &GraphicEditor::loadImage);
 }
 
 GraphicEditor::~GraphicEditor()
@@ -40,7 +40,8 @@ GraphicEditor::~GraphicEditor()
 
 void GraphicEditor::slotTimer() {
     timer->stop();
-    scene->setSceneRect(0, 0, ui->graphicsView->width()-20, ui->graphicsView->height()-200);
+    QRect view_rect = ui->graphicsView->viewport()->rect();
+    scene->setSceneRect(0, 0, view_rect.width(), view_rect.height());
 }
 
 void GraphicEditor::brushSizeCanged() {
@@ -55,9 +56,6 @@ void GraphicEditor::resizeEvent(QResizeEvent *event) {
 void GraphicEditor::setWhiteColor() {
     scene->setColor(255, 255, 255);
     ui->frame->setStyleSheet("background-color: rgb(255, 255, 255)");
-    //brush_color[0] = 255;
-    //brush_color[1] = 255;
-    //brush_color[2] = 255;
 }
 
 void GraphicEditor::setBlackColor() {
@@ -102,20 +100,42 @@ void GraphicEditor::setYellowColor() {
 
 void GraphicEditor::setBrushMode() {
     scene->setDrawMode("BRUSH");
+    ui->modeLabel->setText("Кисть");
 }
 
 void GraphicEditor::setRectMode() {
     scene->setDrawMode("RECT");
+    ui->modeLabel->setText("Прямоугольник");
 }
 
 void GraphicEditor::setEllipseMode() {
     scene->setDrawMode("ELLIPSE");
+    ui->modeLabel->setText("Эллипс");
 }
 
 void GraphicEditor::setLineMode() {
     scene->setDrawMode("LINE");
+    ui->modeLabel->setText("Линия");
 }
 
 void GraphicEditor::setFillMode() {
     scene->setDrawMode("FILL");
+    ui->modeLabel->setText("Заливка");
+}
+
+void GraphicEditor::saveImage() {
+    QString path = QFileDialog::getSaveFileName(this, tr("Save File"), "/untitled.png", tr("Images (*.png *.jpg)"));
+    QPixmap pixMap = ui->graphicsView->grab();
+    pixMap.save(path);
+}
+
+void GraphicEditor::loadImage() {
+    scene->clear();
+    QString path = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("Images (*.png *.jpg)"));
+
+    QPixmap picture(path);
+    QGraphicsPixmapItem *pixmap_item = scene->addPixmap(picture);
+    pixmap_item->setPos(0, 0);
+    scene->setSceneRect(picture.rect());
+    ui->graphicsView->fitInView(scene->sceneRect(), Qt::KeepAspectRatio);
 }

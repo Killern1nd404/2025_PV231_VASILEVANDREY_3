@@ -1,8 +1,6 @@
 #include "PaintScene.h"
 #include <string>
 
-using namespace std;
-
 int max(int a, int b) {
     if (a > b) {
         return a;
@@ -28,7 +26,7 @@ void PaintScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
         addEllipse(event->scenePos().x() - (int)(brush_size/2), event->scenePos().y() - (int)(brush_size/2), brush_size, brush_size, QPen(Qt::NoPen),QBrush(QColor(brush_color[0], brush_color[1], brush_color[2])));
         previous_point = event->scenePos();
     } else if (draw_mode == "FILL") {
-        addRect(-100, -100, 1000, 1000, QPen(Qt::NoPen), QBrush(QColor(brush_color[0], brush_color[1], brush_color[2])));
+        addRect(0, 0, 800, 630, QPen(Qt::NoPen), QBrush(QColor(brush_color[0], brush_color[1], brush_color[2])));
     } else {
         previous_point = event->scenePos();
     }
