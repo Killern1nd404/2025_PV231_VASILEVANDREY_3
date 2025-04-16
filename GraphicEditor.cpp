@@ -11,6 +11,11 @@ GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     connect(timer, &QTimer::timeout, this, &GraphicEditor::slotTimer);
     timer->start(100);
 
+    QPixmap pixmap("./resources/brush_image.png");
+    QIcon ButtonIcon(pixmap);
+    ui->brushButton->setIcon(ButtonIcon);
+    //ui->brushButton->setIconSize(QSize(65, 65));
+
     connect(ui->brushSize, &QSpinBox::valueChanged, this, &GraphicEditor::brushSizeCanged);
     connect(ui->setWhiteButton, &QPushButton::clicked, this, &GraphicEditor::setWhiteColor);
     connect(ui->setBlackButton, &QPushButton::clicked, this, &GraphicEditor::setBlackColor);
@@ -21,6 +26,10 @@ GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     connect(ui->setPurpleButton, &QPushButton::clicked, this, &GraphicEditor::setPurpleColor);
     connect(ui->setYellowButton, &QPushButton::clicked, this, &GraphicEditor::setYellowColor);
     connect(ui->setOrangeButton, &QPushButton::clicked, this, &GraphicEditor::setOrangeColor);
+    connect(ui->brushButton, &QPushButton::clicked, this, &GraphicEditor::setBrushMode);
+    connect(ui->rectButton, &QPushButton::clicked, this, &GraphicEditor::setRectMode);
+    connect(ui->ellipseButton, &QPushButton::clicked, this, &GraphicEditor::setEllipseMode);
+    connect(ui->lineButton, &QPushButton::clicked, this, &GraphicEditor::setLineMode);
 }
 
 GraphicEditor::~GraphicEditor()
@@ -88,4 +97,20 @@ void GraphicEditor::setPurpleColor() {
 void GraphicEditor::setYellowColor() {
     scene->setColor(255, 255, 0);
     ui->frame->setStyleSheet("background-color: rgb(255, 255, 0)");
+}
+
+void GraphicEditor::setBrushMode() {
+    scene->setDrawMode("BRUSH");
+}
+
+void GraphicEditor::setRectMode() {
+    scene->setDrawMode("RECT");
+}
+
+void GraphicEditor::setEllipseMode() {
+    scene->setDrawMode("ELLIPSE");
+}
+
+void GraphicEditor::setLineMode() {
+    scene->setDrawMode("LINE");
 }

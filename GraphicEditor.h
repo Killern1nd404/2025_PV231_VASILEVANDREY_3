@@ -34,6 +34,10 @@ class GraphicEditor : public QMainWindow
     void setBrownColor();
     void setYellowColor();
     void setPurpleColor();
+    void setBrushMode();
+    void setRectMode();
+    void setEllipseMode();
+    void setLineMode();
 
 public:
     GraphicEditor(QWidget *parent = nullptr);

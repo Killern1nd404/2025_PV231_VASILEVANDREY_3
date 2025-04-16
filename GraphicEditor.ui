@@ -5430,6 +5430,90 @@
      </property>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>190</y>
+      <width>161</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Инструменты</string>
+    </property>
+    <widget class="QPushButton" name="brushButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Кисть</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>270</y>
+      <width>161</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Фигуры</string>
+    </property>
+    <widget class="QPushButton" name="rectButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Прямоугольник</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ellipseButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>65</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Эллипс</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="lineButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>100</y>
+       <width>140</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Линия</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
