@@ -2,7 +2,6 @@
 #include "./ui_GraphicEditor.h"
 #include <QFileDialog>
 #include <QGraphicsPixmapItem>
-#include <iostream>
 
 GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::GraphicEditor) {
     ui->setupUi(this);
@@ -31,11 +30,6 @@ GraphicEditor::GraphicEditor(QWidget *parent) : QMainWindow(parent), ui(new Ui::
     connect(ui->fillButton, &QPushButton::clicked, this, &GraphicEditor::setFillMode);
     connect(ui->saveButton, &QAction::triggered, this, &GraphicEditor::saveImage);
     connect(ui->loadButton, &QAction::triggered, this, &GraphicEditor::loadImage);
-}
-
-GraphicEditor::~GraphicEditor()
-{
-    delete ui;
 }
 
 void GraphicEditor::slotTimer() {

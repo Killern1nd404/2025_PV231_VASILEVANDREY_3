@@ -17,10 +17,6 @@ int min(int a, int b) {
     }
 }
 
-PaintScene::PaintScene(QObject *parent) : QGraphicsScene(parent) {}
-
-PaintScene::~PaintScene() {}
-
 void PaintScene::mousePressEvent(QGraphicsSceneMouseEvent *event) {
     if (draw_mode == "BRUSH") {
         addEllipse(event->scenePos().x() - (int)(brush_size/2), event->scenePos().y() - (int)(brush_size/2), brush_size, brush_size, QPen(Qt::NoPen),QBrush(QColor(brush_color[0], brush_color[1], brush_color[2])));

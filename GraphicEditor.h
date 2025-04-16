@@ -7,6 +7,7 @@
 #include <QResizeEvent>
 #include "PaintScene.h"
 #include "ui_GraphicEditor.h"
+#include "SmartPtr.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +18,7 @@ QT_END_NAMESPACE
 class GraphicEditor : public QMainWindow
 {
     Q_OBJECT
-    Ui::GraphicEditor *ui;
+    SmartPtr<Ui::GraphicEditor> ui;
     QTimer *timer;
     PaintScene *scene;
 
@@ -43,7 +44,6 @@ class GraphicEditor : public QMainWindow
 
 public:
     GraphicEditor(QWidget *parent = nullptr);
-    ~GraphicEditor();
 };
 
 #endif // GRAPHICEDITOR_H

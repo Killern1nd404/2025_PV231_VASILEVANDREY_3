@@ -21,8 +21,7 @@ class PaintScene : public QGraphicsScene
     void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 public:
-    PaintScene(QObject *parent=nullptr);
-    ~PaintScene();
+    PaintScene(QObject *parent=nullptr) : QGraphicsScene(parent) {};
     void changeBrushSize(int size);
     void setColor(int r, int g, int b);
     void setDrawMode(string mode);
